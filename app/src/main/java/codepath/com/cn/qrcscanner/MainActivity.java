@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             Bundle bundle = data.getExtras();
-            String qrcResult = bundle.getString("result");
+            String qrcResult = bundle.getString(CaptureActivity.EXTR_QRC_DECONE_RESULT);
 
             mTvScannerResult.setText(qrcResult);
         }

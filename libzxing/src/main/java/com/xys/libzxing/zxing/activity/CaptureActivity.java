@@ -54,7 +54,13 @@ import java.lang.reflect.Field;
  */
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
 
+
     private static final String TAG = CaptureActivity.class.getSimpleName();
+
+    // QRC解码，返回的参数名
+    public static final String EXTR_QRC_DECONE_WIDTH = "width";
+    public static final String EXTR_QRC_DECONE_HEIGHT = "height";
+    public static final String EXTR_QRC_DECONE_RESULT = "result";
 
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
@@ -185,9 +191,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         beepManager.playBeepSoundAndVibrate();
 
         Intent resultIntent = new Intent();
-        bundle.putInt("width", mCropRect.width());
-        bundle.putInt("height", mCropRect.height());
-        bundle.putString("result", rawResult.getText());
+        bundle.putInt(EXTR_QRC_DECONE_WIDTH, mCropRect.width());
+        bundle.putInt(EXTR_QRC_DECONE_HEIGHT, mCropRect.height());
+        bundle.putString(EXTR_QRC_DECONE_RESULT, rawResult.getText());
         resultIntent.putExtras(bundle);
         this.setResult(RESULT_OK, resultIntent);
         CaptureActivity.this.finish();
